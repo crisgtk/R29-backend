@@ -14,6 +14,7 @@ namespace R29_backend
     {
         public static void Main(string[] args)
         {
+            varGlobal.Environment("prod"); 
             CreateWebHostBuilder(args).Build().Run();
         }
 
