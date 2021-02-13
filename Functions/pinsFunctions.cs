@@ -18,7 +18,7 @@ namespace Function
 
 
             };
-            return varGlobal.sql.ExecuteSqlQuery("execute execute iacoapp.[pins_insert] @latitude,@longitude,@type,@description", var, varGlobal.DataBase);
+            return varGlobal.sql.ExecuteSqlQuery("execute iacoapp.[pins_insert] @latitude,@longitude,@type,@description", var, varGlobal.DataBase);
         }
 
         public DataTable pinsUpdate(pinsModel _data)
@@ -32,14 +32,18 @@ namespace Function
 
 
             };
-            return varGlobal.sql.ExecuteSqlQuery("execute execute iacoapp.pins_update @id,@latitude,@longitude,@type,@description", var, varGlobal.DataBase);
+            return varGlobal.sql.ExecuteSqlQuery("execute iacoapp.pins_update @id,@latitude,@longitude,@type,@description", var, varGlobal.DataBase);
         }
         public DataTable pinsRemove(pinsModel _data)
         {
             string[,] var = {
             {"id", _data.ID.ToString()}
             };
-            return varGlobal.sql.ExecuteSqlQuery("execute execute iacoapp.[pins_remove] @id", var, varGlobal.DataBase);
+            return varGlobal.sql.ExecuteSqlQuery("execute iacoapp.[pins_remove] @id", var, varGlobal.DataBase);
+        }
+        public DataTable listPins()
+        {
+            return varGlobal.sql.ExecuteSqlQuery("execute [iacoapp].[search_pins]", null, varGlobal.DataBase);
         }
     }
 }

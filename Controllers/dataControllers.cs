@@ -10,11 +10,24 @@ using Newtonsoft.Json;
 namespace Controllers
 {
     [Route("[controller]/[action]")]
-    public class dataControllers : ControllerBase
+    public class dataController : ControllerBase
     {
         private dataFunction _RefFunction = new dataFunction();
+
+      [HttpGet]
+        public Result getData()
+        {
+            try
+            {
+                return Result.Success(JsonConvert.SerializeObject(_RefFunction.getData()));
+            }
+            catch (Exception ex)
+            {
+                return Result.Fail(ex.Message);
+            }
+        }
         [HttpPost]
-        public ActionResult<Result> dataInsert([FromBody] dataModel _dataUsr)
+        public ActionResult<Result> dataInsert([FromBody] List<dataModel> _dataUsr)
         {
             try
             {

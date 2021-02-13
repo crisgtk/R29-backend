@@ -10,7 +10,7 @@ using Newtonsoft.Json;
 namespace Controllers
 {
     [Route("[controller]/[action]")]
-    public class pinsControllers : ControllerBase
+    public class pinsController : ControllerBase
     {
         private pinsFuntcion _RefFunction = new pinsFuntcion();
         [HttpPost]
@@ -44,6 +44,18 @@ namespace Controllers
             try
             {
                 return Result.Success(JsonConvert.SerializeObject(_RefFunction.pinsRemove(_dataPins)));
+            }
+            catch (Exception ex)
+            {
+                return Result.Fail(ex.Message);
+            }
+        }
+              [HttpGet]
+        public Result getPins()
+        {
+            try
+            {
+                return Result.Success(_RefFunction.listPins());
             }
             catch (Exception ex)
             {
