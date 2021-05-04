@@ -39,7 +39,7 @@ namespace Controllers
             }
         }
         [HttpPost]
-        public ActionResult<Result> UpadateUser([FromBody] user _listaUsr)
+        public ActionResult<Result> updateUser([FromBody] user _listaUsr)
         {
             try
             {
@@ -50,13 +50,24 @@ namespace Controllers
                 return Result.Fail(ex.Message);
             }
         }
-
-         [HttpGet("{user}/{password}")]
+        [HttpGet("{user}")]
+        public ActionResult<Result> userAtributes(string user)
+        {
+            try
+            {
+                return Result.Success(_RefFunction.userAtributes(user));
+            }
+            catch (Exception ex)
+            {
+                return Result.Fail(ex.Message);
+            }
+        }
+        [HttpGet("{user}/{password}")]
         public ActionResult<Result> ShearchUser(string user, string password)
         {
             try
             {
-                return Result.Success(_RefFunction.ShearchUser(user,password));
+                return Result.Success(_RefFunction.ShearchUser(user, password));
             }
             catch (Exception ex)
             {

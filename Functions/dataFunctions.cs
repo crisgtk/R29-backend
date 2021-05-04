@@ -11,9 +11,9 @@ namespace Function
             DataTable data = new DataTable();
             foreach (var item in _data)
             {
-                
-           
-            string[,] var = {
+
+
+                string[,] var = {
             {"description", item.description},
             {"id_user", item.id_user.ToString()},
             {"latitude", item.latitude.ToString()},
@@ -25,10 +25,10 @@ namespace Function
             {"altitude", item.altitude.ToString()},
             {"altitudeAccuracy", item.altitudeAccuracy.ToString()}
             };
-            data= varGlobal.sql.ExecuteSqlQuery("execute iacoapp.[data_insert] @description,@id_user,@latitude,@longitude,@interval,@header,@speed,@accuracy,@altitude,@altitudeAccuracy", var, varGlobal.DataBase);
-        
-         }
-         return data;
+                data = varGlobal.sql.ExecuteSqlQuery("execute iacoapp.[data_insert] @description,@id_user,@latitude,@longitude,@interval,@header,@speed,@accuracy,@altitude,@altitudeAccuracy", var, varGlobal.DataBase);
+
+            }
+            return data;
         }
         public DataTable dataUpdate(dataModel _data)
         {
@@ -48,22 +48,38 @@ namespace Function
             return varGlobal.sql.ExecuteSqlQuery("execute iacoapp.[data_update] @id,@description,@id_user,@latitude,@longitude,@interval,@header,@speed,@accuracy,@altitude,@altitudeAccuracy", var, varGlobal.DataBase);
         }
 
-        public DataTable dataDeleteDetail(dataModel _data){
+        public DataTable dataDeleteDetail(dataModel _data)
+        {
             string[,] var = {
                 {"id", _data.ID.ToString()}
             };
-             return varGlobal.sql.ExecuteSqlQuery("execute iacoapp.[data_remove] @id", var, varGlobal.DataBase);
+            return varGlobal.sql.ExecuteSqlQuery("execute iacoapp.[data_remove] @id", var, varGlobal.DataBase);
         }
-              public DataTable dataDeleteDescription(dataModel _data){
+        public DataTable dataDeleteDescription(string id_usuario, string description)
+        {
             string[,] var = {
-                {"description", _data.description.ToString()}
+                {"id_user", id_usuario.ToString()},
+                {"description",description.ToString()}
             };
-             return varGlobal.sql.ExecuteSqlQuery("execute iacoapp.[data_removeDescription] @description", var, varGlobal.DataBase);
+            return varGlobal.sql.ExecuteSqlQuery("execute iacoapp.[data_removeDescription] @id_user,@description", var, varGlobal.DataBase);
         }
 
-        public DataTable getData()
+        public DataTable getData(string user)
         {
-            return varGlobal.sql.ExecuteSqlQuery("execute [iacoapp].[search_data]", null, varGlobal.DataBase);
+            string[,] var = {
+                {"suer", user.ToString()}
+            };
+            return varGlobal.sql.ExecuteSqlQuery("execute [iacoapp].[search_data]  @user", var, varGlobal.DataBase);
+        }
+
+        public DataTable shareData(string id_usuario, string rutas)
+        {
+            string[,] var = {
+                {"id_usuario", id_usuario.ToString()},
+                {"ruta", rutas.ToString()}
+
+            };
+            return varGlobal.sql.ExecuteSqlQuery("execute [iacoapp].[share_data]  @id_usuario,@ruta", var, varGlobal.DataBase);
         }
 
     }

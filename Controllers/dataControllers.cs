@@ -14,12 +14,24 @@ namespace Controllers
     {
         private dataFunction _RefFunction = new dataFunction();
 
-      [HttpGet]
-        public Result getData()
+      [HttpGet("{user}")]
+        public Result getData(string user)
         {
             try
             {
-                return Result.Success(JsonConvert.SerializeObject(_RefFunction.getData()));
+                return Result.Success(JsonConvert.SerializeObject(_RefFunction.getData(user)));
+            }
+            catch (Exception ex)
+            {
+                return Result.Fail(ex.Message);
+            }
+        }
+              [HttpGet("{id_usuario}/{rutas}")]
+        public Result shareData(string id_usuario, string rutas )
+        {
+            try
+            {
+                return Result.Success(JsonConvert.SerializeObject(_RefFunction.shareData(id_usuario,rutas)));
             }
             catch (Exception ex)
             {
@@ -56,6 +68,18 @@ namespace Controllers
             try
             {
                 return Result.Success(JsonConvert.SerializeObject(_RefFunction.dataDeleteDetail(_dataUsr)));
+            }
+            catch (Exception ex)
+            {
+                return Result.Fail(ex.Message);
+            }
+        }
+          [HttpGet("{id_usuario}/{description}")]
+        public Result dataDeleteDescription(string id_usuario, string description )
+        {
+            try
+            {
+                return Result.Success(JsonConvert.SerializeObject(_RefFunction.dataDeleteDescription(id_usuario,description)));
             }
             catch (Exception ex)
             {

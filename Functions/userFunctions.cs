@@ -11,8 +11,15 @@ namespace Function
         {
             return varGlobal.sql.ExecuteSqlQuery("execute iacoapp.user_list", null, varGlobal.DataBase);
         }
-
-                public DataTable insertUser(user _data)
+        public DataTable userAtributes(string user)
+        {
+             string[,] var ={
+                  {"user",user}  
+             };
+            return varGlobal.sql.ExecuteSqlQuery("execute [iacoapp].[user_atributes] @user", var, varGlobal.DataBase);
+        }
+          
+          public DataTable insertUser(user _data)
         {
              string[,] var = {
             {"name", _data.Name},
@@ -21,7 +28,7 @@ namespace Function
             {"email",_data.Email},
             {"telephone",_data.Telephone},
             };
-             return varGlobal.sql.ExecuteSqlQuery("execute iacoapp.user_search @name,@user,@pasword,@email,@telephone", var, varGlobal.DataBase);
+             return varGlobal.sql.ExecuteSqlQuery("execute [iacoapp].[user_insert] @name,@user,@password,@email,@telephone", var, varGlobal.DataBase);
         }
 
         public DataTable UpadateUser(user _data)
@@ -30,12 +37,12 @@ namespace Function
             {"id", _data.ID.ToString()},
             {"name", _data.Name},
             {"user", _data.User},
-            {"password", _data.Password},
+          //   {"password", _data.Password},
             {"email",_data.Email},
             {"telephone",_data.Telephone},
             {"active",_data.active}
             };
-             return varGlobal.sql.ExecuteSqlQuery("execute iacoapp.user_search @id,@name,@user,@pasword,@email,@telephone,@active", var, varGlobal.DataBase);
+             return varGlobal.sql.ExecuteSqlQuery("execute iacoapp.user_update @id,@name,@user,@email,@telephone,@active", var, varGlobal.DataBase);
         }
 
         
