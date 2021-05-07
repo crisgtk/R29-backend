@@ -26,6 +26,31 @@ namespace Controllers
                 return Result.Fail(ex.Message);
             }
         }
+
+         [HttpGet("{id_user}")]
+        public Result getDataDescription(string id_user)
+        {
+            try
+            {
+                return Result.Success(_RefFunction.getDataDescription(id_user));
+            }
+            catch (Exception ex)
+            {
+                return Result.Fail(ex.Message);
+            }
+        }
+         [HttpGet("{id_user}/{description}")]
+        public Result getDataListforUser(string id_user,string description)
+        {
+            try
+            {
+                return Result.Success(_RefFunction.getDataListforUser(id_user,description));
+            }
+            catch (Exception ex)
+            {
+                return Result.Fail(ex.Message);
+            }
+        }
               [HttpGet("{id_usuario}/{rutas}")]
         public Result shareData(string id_usuario, string rutas )
         {

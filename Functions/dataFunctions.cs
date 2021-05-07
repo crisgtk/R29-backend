@@ -72,6 +72,22 @@ namespace Function
             return varGlobal.sql.ExecuteSqlQuery("execute [iacoapp].[search_data]  @user", var, varGlobal.DataBase);
         }
 
+        public DataTable getDataDescription(string id_user)
+        {
+            string[,] var = {
+                {"id_user", id_user.ToString()}
+            };
+            return varGlobal.sql.ExecuteSqlQuery("execute [iacoapp].[search_data_description]  @id_user", var, varGlobal.DataBase);
+        }
+
+        public DataTable getDataListforUser(string id_user,string description)
+        {
+            string[,] var = {
+                {"id_user", id_user.ToString()},
+                {"description", description.ToString()}
+            };
+            return varGlobal.sql.ExecuteSqlQuery("execute [iacoapp].[data_listForUser]  @id_user,@description", var, varGlobal.DataBase);
+        }
         public DataTable shareData(string id_usuario, string rutas)
         {
             string[,] var = {
