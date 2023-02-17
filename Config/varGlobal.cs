@@ -15,18 +15,18 @@ public static class varGlobal
     {
         switch (enviro)
         {
-            
+
             case "prod":
-                DataBase = "iaco_r29";
-                DataBaseUser = "iacoapp";
-                DataBasePass = "iaco*2020";
-                Server = @"68.71.137.39,1533";
+                DataBase = "geoarr";
+                DataBaseUser = "crisgtk";
+                DataBasePass = "Vtr.185566";
+                Server = @"23.239.201.115,1533";
                 break;
             case "dev":
-                DataBase = "iaco_r29";
-                DataBaseUser = "iacoapp";
-                DataBasePass = "iaco*2020";
-                Server = @"68.71.137.39,1533";
+                DataBase = "geoarr";
+                DataBaseUser = "crisgtk";
+                DataBasePass = "Vtr.185566";
+                Server = @"23.239.201.115,1533";
                 break;
         }
 

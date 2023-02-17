@@ -55,7 +55,7 @@ namespace Controllers
         {
             try
             {
-                return Result.Success(_RefFunction.userAtributes(user));
+                return Result.Success(JsonConvert.SerializeObject(_RefFunction.userAtributes(user)));
             }
             catch (Exception ex)
             {

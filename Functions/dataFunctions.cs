@@ -9,6 +9,7 @@ namespace Function
         public DataTable dataInsert(List<dataModel> _data)
         {
             DataTable data = new DataTable();
+
             foreach (var item in _data)
             {
 
@@ -25,7 +26,7 @@ namespace Function
             {"altitude", item.altitude.ToString()},
             {"altitudeAccuracy", item.altitudeAccuracy.ToString()}
             };
-                data = varGlobal.sql.ExecuteSqlQuery("execute iacoapp.[data_insert] @description,@id_user,@latitude,@longitude,@interval,@header,@speed,@accuracy,@altitude,@altitudeAccuracy", var, varGlobal.DataBase);
+                data = varGlobal.sql.ExecuteSqlQuery("execute crisgtk.[data_insert] @description,@id_user,@latitude,@longitude,@interval,@header,@speed,@accuracy,@altitude,@altitudeAccuracy", var, varGlobal.DataBase);
 
             }
             return data;
@@ -45,7 +46,7 @@ namespace Function
             {"altitude", _data.altitude.ToString()},
             {"altitudeAccuracy", _data.altitudeAccuracy.ToString()}
             };
-            return varGlobal.sql.ExecuteSqlQuery("execute iacoapp.[data_update] @id,@description,@id_user,@latitude,@longitude,@interval,@header,@speed,@accuracy,@altitude,@altitudeAccuracy", var, varGlobal.DataBase);
+            return varGlobal.sql.ExecuteSqlQuery("execute crisgtk.[data_update] @id,@description,@id_user,@latitude,@longitude,@interval,@header,@speed,@accuracy,@altitude,@altitudeAccuracy", var, varGlobal.DataBase);
         }
 
         public DataTable dataDeleteDetail(dataModel _data)
@@ -53,7 +54,7 @@ namespace Function
             string[,] var = {
                 {"id", _data.ID.ToString()}
             };
-            return varGlobal.sql.ExecuteSqlQuery("execute iacoapp.[data_remove] @id", var, varGlobal.DataBase);
+            return varGlobal.sql.ExecuteSqlQuery("execute crisgtk.[data_remove] @id", var, varGlobal.DataBase);
         }
         public DataTable dataDeleteDescription(string id_usuario, string description)
         {
@@ -61,7 +62,7 @@ namespace Function
                 {"id_user", id_usuario.ToString()},
                 {"description",description.ToString()}
             };
-            return varGlobal.sql.ExecuteSqlQuery("execute iacoapp.[data_removeDescription] @id_user,@description", var, varGlobal.DataBase);
+            return varGlobal.sql.ExecuteSqlQuery("execute crisgtk.[data_removeDescription] @id_user,@description", var, varGlobal.DataBase);
         }
 
         public DataTable getData(string user)
@@ -69,7 +70,7 @@ namespace Function
             string[,] var = {
                 {"suer", user.ToString()}
             };
-            return varGlobal.sql.ExecuteSqlQuery("execute [iacoapp].[search_data]  @user", var, varGlobal.DataBase);
+            return varGlobal.sql.ExecuteSqlQuery("execute [crisgtk].[search_data]  @user", var, varGlobal.DataBase);
         }
 
         public DataTable getDataDescription(string id_user)
@@ -77,16 +78,16 @@ namespace Function
             string[,] var = {
                 {"id_user", id_user.ToString()}
             };
-            return varGlobal.sql.ExecuteSqlQuery("execute [iacoapp].[search_data_description]  @id_user", var, varGlobal.DataBase);
+            return varGlobal.sql.ExecuteSqlQuery("execute [crisgtk].[search_data_description]  @id_user", var, varGlobal.DataBase);
         }
 
-        public DataTable getDataListforUser(string id_user,string description)
+        public DataTable getDataListforUser(string id_user, string description)
         {
             string[,] var = {
                 {"id_user", id_user.ToString()},
                 {"description", description.ToString()}
             };
-            return varGlobal.sql.ExecuteSqlQuery("execute [iacoapp].[data_listForUser]  @id_user,@description", var, varGlobal.DataBase);
+            return varGlobal.sql.ExecuteSqlQuery("execute [crisgtk].[data_listForUser]  @id_user,@description", var, varGlobal.DataBase);
         }
         public DataTable shareData(string id_usuario, string rutas)
         {
@@ -95,7 +96,7 @@ namespace Function
                 {"ruta", rutas.ToString()}
 
             };
-            return varGlobal.sql.ExecuteSqlQuery("execute [iacoapp].[share_data]  @id_usuario,@ruta", var, varGlobal.DataBase);
+            return varGlobal.sql.ExecuteSqlQuery("execute [crisgtk].[share_data]  @id_usuario,@ruta", var, varGlobal.DataBase);
         }
 
     }

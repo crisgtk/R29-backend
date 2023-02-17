@@ -16,7 +16,7 @@ using Microsoft.IdentityModel.Tokens;
 
 namespace R29_backend
 {
- public class Startup
+    public class Startup
     {
         public Startup(IConfiguration configuration)
         {
@@ -30,16 +30,16 @@ namespace R29_backend
         {
             services.AddCors(
                     _options => _options.AddPolicy("PoliticasdeAcceso",
-                                _builder=>  _builder.AllowAnyOrigin()
+                                _builder => _builder.AllowAnyOrigin()
                                                     .AllowAnyMethod()
                                                     .AllowAnyHeader()
                                                     .AllowCredentials())
             );
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
-            string scretKey="";
-            scretKey=varGlobal.sql.ExecuteSqlQuery("iacoapp.SecretKey",null,varGlobal.DataBase)  .Rows[0][0].ToString();            
+            string scretKey = "";
+            scretKey = varGlobal.sql.ExecuteSqlQuery("crisgtk.SecretKey", null, varGlobal.DataBase).Rows[0][0].ToString();
             // configure jwt authentication
-           
+
             var key = System.Text.Encoding.ASCII.GetBytes(scretKey);
             services.AddAuthentication(optionAuth =>
             {
@@ -57,7 +57,7 @@ namespace R29_backend
                     ValidateIssuer = false,
                     ValidateAudience = false
                 };
-            }); 
+            });
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -75,7 +75,7 @@ namespace R29_backend
             }
 
             app.UseCors("PoliticasdeAcceso");
-            app.UseAuthentication();    
+            app.UseAuthentication();
             app.UseMvc();
         }
     }
