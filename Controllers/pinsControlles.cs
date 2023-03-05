@@ -50,12 +50,24 @@ namespace Controllers
                 return Result.Fail(ex.Message);
             }
         }
-              [HttpGet]
+        [HttpGet]
         public Result getPins()
         {
             try
             {
                 return Result.Success(_RefFunction.listPins());
+            }
+            catch (Exception ex)
+            {
+                return Result.Fail(ex.Message);
+            }
+        }
+        [HttpPost]
+        public ActionResult<Result> getUserPins([FromBody] pinsModel _dataPins)
+        {
+            try
+            {
+                return Result.Success(_RefFunction.listUserPins(_dataPins));
             }
             catch (Exception ex)
             {
