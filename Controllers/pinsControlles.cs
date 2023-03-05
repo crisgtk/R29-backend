@@ -14,7 +14,7 @@ namespace Controllers
     {
         private pinsFuntcion _RefFunction = new pinsFuntcion();
         [HttpPost]
-        public ActionResult<Result> pinsInsert([FromBody] pinsModel _dataPins)
+        public ActionResult<Result> pinsInsert([FromBody] List<pinsModel> _dataPins)
         {
             try
             {
