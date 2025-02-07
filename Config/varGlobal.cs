@@ -17,16 +17,16 @@ public static class varGlobal
         {
 
             case "prod":
-                DataBase = "geoarr";
-                DataBaseUser = "crisgtk";
-                DataBasePass = "Vtr.185566";
-                Server = @"23.239.201.115,1533";
+                DataBase = "cygnusgroup_database";
+                DataBaseUser = "developer";
+                DataBasePass = "cygnusgr.1855";
+                Server = @"173.248.133.181,1533";
                 break;
             case "dev":
-                DataBase = "geoarr";
-                DataBaseUser = "crisgtk";
-                DataBasePass = "Vtr.185566";
-                Server = @"23.239.201.115,1533";
+                DataBase = "cygnusgroup_database";
+                DataBaseUser = "developer";
+                DataBasePass = "cygnusgr.1855";
+                Server = @"173.248.133.181,1533";
                 break;
         }
 
