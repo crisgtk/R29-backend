@@ -20,6 +20,7 @@ namespace R29_backend
     {
         public Startup(IConfiguration configuration)
         {
+            AppContext.SetSwitch("System.Net.Security.RemoteCertificateValidationCallback", true);
             Configuration = configuration;
         }
 
@@ -37,7 +38,7 @@ namespace R29_backend
             );
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             string scretKey = "";
-            scretKey = varGlobal.sql.ExecuteSqlQuery("developer.SecretKey", null, varGlobal.DataBase).Rows[0][0].ToString();
+            scretKey = varGlobal.sql.ExecuteSqlQuery("crisgtk.SecretKey", null, varGlobal.DataBase).Rows[0][0].ToString();
             // configure jwt authentication
 
             var key = System.Text.Encoding.ASCII.GetBytes(scretKey);
