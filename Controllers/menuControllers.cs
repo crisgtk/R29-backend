@@ -28,5 +28,30 @@ namespace Controllers
             }
         }
 
+        [HttpGet]
+        public Result getProperties()
+        {
+            try
+            {
+                return Result.Success(JsonConvert.SerializeObject(_RefFunction.getProperties()));
+            }
+            catch (Exception ex)
+            {
+                return Result.Fail(ex.Message);
+            }
+        }
+          [HttpGet]
+        public Result getPropertyDescriptions()
+        {
+            try
+            {
+                return Result.Success(JsonConvert.SerializeObject(_RefFunction.getPropertyDescriptions()));
+            }
+            catch (Exception ex)
+            {
+                return Result.Fail(ex.Message);
+            }
+        }
+
     }
 }

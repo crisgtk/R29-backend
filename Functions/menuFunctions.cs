@@ -12,5 +12,13 @@ namespace Function
         {
             return varGlobal.sql.ExecuteSqlQuery("execute crisgtk.CYG_menu",null, varGlobal.DataBase);
         }
+        public DataTable getProperties()
+        {
+            return varGlobal.sql.ExecuteSqlQuery("execute crisgtk.CYG_properties",null, varGlobal.DataBase);
+        }
+        public DataTable getPropertyDescriptions()
+        {
+            return varGlobal.sql.ExecuteSqlQuery("execute crisgtk.CYG_property_descriptions",null, varGlobal.DataBase);
+        }
     }
 }
