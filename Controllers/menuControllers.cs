@@ -52,6 +52,19 @@ namespace Controllers
                 return Result.Fail(ex.Message);
             }
         }
+             [HttpGet]
+        public Result getLocations()
+        {
+            try
+            {
+                return Result.Success(JsonConvert.SerializeObject(_RefFunction.getLocations()));
+            }
+            catch (Exception ex)
+            {
+                return Result.Fail(ex.Message);
+            }
+        }
+        
 
     }
 }

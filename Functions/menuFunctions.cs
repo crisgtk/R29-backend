@@ -20,5 +20,10 @@ namespace Function
         {
             return varGlobal.sql.ExecuteSqlQuery("execute crisgtk.CYG_property_descriptions",null, varGlobal.DataBase);
         }
+
+        public DataTable getLocations()
+        {
+            return varGlobal.sql.ExecuteSqlQuery("execute crisgtk.CYG_LocationsProperties",null, varGlobal.DataBase);
+        }
     }
 }
