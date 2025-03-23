@@ -52,7 +52,7 @@ namespace Controllers
                 return Result.Fail(ex.Message);
             }
         }
-             [HttpGet]
+        [HttpGet]
         public Result getLocations()
         {
             try
@@ -64,7 +64,19 @@ namespace Controllers
                 return Result.Fail(ex.Message);
             }
         }
-        
+  
+    [HttpPost]
+    public ActionResult<Result> ShearchUser([FromBody] UserLoginDto user)
+    {
+        try
+        {
+            return Result.Success(JsonConvert.SerializeObject(_RefFunction.ShearchUser(user.email, user.password)));
+        }
+        catch (Exception ex)
+        {
+            return Result.Fail(ex.Message);
+        }
+    }
 
     }
 }

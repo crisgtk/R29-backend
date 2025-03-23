@@ -25,5 +25,13 @@ namespace Function
         {
             return varGlobal.sql.ExecuteSqlQuery("execute crisgtk.CYG_LocationsProperties",null, varGlobal.DataBase);
         }
+           public DataTable ShearchUser(string email, string password)
+        {
+            string[,] var = {
+            {"email", email},
+            {"password", password},
+            };
+            return varGlobal.sql.ExecuteSqlQuery("execute crisgtk.CYG_user_search @email,@password", var, varGlobal.DataBase);
+        }
     }
 }

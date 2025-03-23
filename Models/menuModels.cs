@@ -17,4 +17,10 @@ namespace Models
         //public List<SubMenuItem> SubMenuItems { get; set; }
     }
 
+         public class UserLoginDto
+        {
+            public string email { get; set; }
+            public string password { get; set; }
+        }
+
 }
