@@ -12,9 +12,13 @@ namespace Function
         {
             return varGlobal.sql.ExecuteSqlQuery("execute crisgtk.CYG_menu",null, varGlobal.DataBase);
         }
-        public DataTable getProperties()
+        public DataTable getProperties(string id)
         {
-            return varGlobal.sql.ExecuteSqlQuery("execute crisgtk.CYG_properties",null, varGlobal.DataBase);
+             string[,] var = {
+            {"id", id}
+            };
+
+            return varGlobal.sql.ExecuteSqlQuery("execute crisgtk.CYG_properties @executiveId", var, varGlobal.DataBase);
         }
         public DataTable getPropertyDescriptions()
         {
