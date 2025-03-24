@@ -64,6 +64,30 @@ namespace Controllers
                 return Result.Fail(ex.Message);
             }
         }
+        [HttpGet]
+        public Result getPropertyForSlice()
+        {
+            try
+            {
+                return Result.Success(JsonConvert.SerializeObject(_RefFunction.getPropertyForSlice()));
+            }
+            catch (Exception ex)
+            {
+                return Result.Fail(ex.Message);
+            }
+        }
+        [HttpGet]
+        public Result getPropertyForCities()
+        {
+            try
+            {
+                return Result.Success(JsonConvert.SerializeObject(_RefFunction.getPropertyForCities()));
+            }
+            catch (Exception ex)
+            {
+                return Result.Fail(ex.Message);
+            }
+        }
   
     [HttpPost]
     public ActionResult<Result> ShearchUser([FromBody] UserLoginDto user)
