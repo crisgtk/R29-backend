@@ -28,7 +28,7 @@ namespace Controllers
             }
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("{id?}")]
         public Result getProperties(string id)
         {
             try

@@ -14,11 +14,16 @@ namespace Function
         }
         public DataTable getProperties(string id)
         {
-             string[,] var = {
-            {"id", id}
-            };
+            string query = "execute crisgtk.CYG_properties";
+            string[,] parameters = null;
 
-            return varGlobal.sql.ExecuteSqlQuery("execute crisgtk.CYG_properties @executiveId", var, varGlobal.DataBase);
+            if (!string.IsNullOrEmpty(id))
+            {
+                query += " @executiveId";
+                parameters = new string[,] { { "executiveId", id } };
+            }
+
+            return varGlobal.sql.ExecuteSqlQuery(query, parameters, varGlobal.DataBase);
         }
         public DataTable getPropertyDescriptions()
         {
