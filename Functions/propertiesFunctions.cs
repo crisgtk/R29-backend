@@ -40,5 +40,14 @@ namespace Function
 
             return varGlobal.sql.ExecuteSqlQuery("execute crisgtk.CYG_insert_property @Title,@DescriptionDetail,@DescriptionDetail2,@Category,@ForRent,@Status,@Price,@Image,@YouTubeLink,@VirtualTourLink,@Address,@Country,@City,@Comuna,@ShortDescription,@Latitude,@Longitude,@Rooms,@Bedrooms,@Bathrooms,@YearBuilt,@Features,@PhotoLinks,@Tags,@sqft,@executiveId", parameters, varGlobal.DataBase);
         }
+        public DataTable updateStatusProperty(string id, string status)
+        {
+            System.Diagnostics.Debug.WriteLine("This is a log");
+            string[,] var = {
+            {"id", id},
+            {"status", status},
+            };
+            return varGlobal.sql.ExecuteSqlQuery("execute crisgtk.CYG_update_properties @id,@status", var, varGlobal.DataBase);
+        }
     }
 }
