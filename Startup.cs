@@ -29,13 +29,16 @@ namespace R29_backend
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddCors(
-                    _options => _options.AddPolicy("PoliticasdeAcceso",
-                                _builder => _builder.AllowAnyOrigin()
-                                                    .AllowAnyMethod()
-                                                    .AllowAnyHeader()
-                                                    .AllowCredentials())
-            );
+        services.AddCors(options =>
+{
+    options.AddPolicy("PoliticasdeAcceso", builder =>
+    {
+        builder.WithOrigins("https://tudominio.vercel.app") // Reemplaza con tu dominio en Vercel
+               .AllowAnyMethod()
+               .AllowAnyHeader()
+               .AllowCredentials();
+    });
+});
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             string scretKey = "";
             scretKey = varGlobal.sql.ExecuteSqlQuery("crisgtk.SecretKey", null, varGlobal.DataBase).Rows[0][0].ToString();
