@@ -2,6 +2,7 @@ namespace Models
 {
     public class PropertyDto
     {
+        public int PropertyId { get; set; }
         public string Title { get; set; }
         public string DescriptionDetail { get; set; }
         public string DescriptionDetail2 { get; set; } = "";
