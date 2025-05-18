@@ -40,18 +40,5 @@ namespace Controllers
                 return Result.Fail(ex.Message);
             }
         }
-
-        [HttpGet("{id}/{status}")]
-        public ActionResult<Result> updateStatusProperty(string id, string status)
-        {
-            try
-            {
-                return Result.Success(JsonConvert.SerializeObject(_RefFunction.updateStatusProperty(id, status)));
-            }
-            catch (Exception ex)
-            {
-                return Result.Fail(ex.Message);
-            }
-        }
     }
 }
