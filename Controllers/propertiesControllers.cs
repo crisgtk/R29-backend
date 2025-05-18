@@ -27,12 +27,13 @@ namespace Controllers
                 return Result.Fail(ex.Message);
             }
         }
-        [HttpGet("{id}/{status}")]
-        public ActionResult<Result> updateStatusProperty(string id, string status)
+
+        [HttpPost]
+        public ActionResult<Result> UpdateProperty([FromBody] PropertyDto property)
         {
             try
             {
-                return Result.Success(JsonConvert.SerializeObject(_RefFunction.updateStatusProperty(id, status)));
+                return Result.Success(JsonConvert.SerializeObject(_RefFunction.UpdateProperty(property)));
             }
             catch (Exception ex)
             {
