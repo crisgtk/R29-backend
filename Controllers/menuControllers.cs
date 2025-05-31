@@ -28,12 +28,12 @@ namespace Controllers
             }
         }
 
-        [HttpGet("{id?}")]
-        public Result getProperties(string id)
+        [HttpGet("{executiveId?}/{idProperty?}")]
+        public Result getProperties(string executiveId, string idProperty)
         {
             try
             {
-                return Result.Success(JsonConvert.SerializeObject(_RefFunction.getProperties(id)));
+                return Result.Success(JsonConvert.SerializeObject(_RefFunction.getProperties(executiveId, idProperty)));
             }
             catch (Exception ex)
             {
