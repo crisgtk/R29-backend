@@ -12,15 +12,35 @@ namespace Function
         {
             return varGlobal.sql.ExecuteSqlQuery("execute crisgtk.CYG_menu",null, varGlobal.DataBase);
         }
-        public DataTable getProperties(string id)
-        {
+        public DataTable getProperties(string executiveId, string idProperty)
+            {
             string query = "execute crisgtk.CYG_properties";
-            string[,] parameters = null;
+            List<string[]> paramList = new List<string[]>();
 
-            if (!string.IsNullOrEmpty(id))
+            if (!string.IsNullOrEmpty(executiveId))
             {
                 query += " @executiveId";
-                parameters = new string[,] { { "executiveId", id } };
+                paramList.Add(new string[] { "executiveId", executiveId });
+            }
+
+            if (!string.IsNullOrEmpty(idProperty))
+            {
+                if (!query.Contains("@executiveId"))
+                    query += " @idProperty";
+                else
+                    query += ",@idProperty";
+                paramList.Add(new string[] { "idProperty", idProperty });
+            }
+
+            string[,] parameters = null;
+            if (paramList.Count > 0)
+            {
+                parameters = new string[paramList.Count, 2];
+                for (int i = 0; i < paramList.Count; i++)
+                {
+                    parameters[i, 0] = paramList[i][0];
+                    parameters[i, 1] = paramList[i][1];
+                }
             }
 
             return varGlobal.sql.ExecuteSqlQuery(query, parameters, varGlobal.DataBase);
