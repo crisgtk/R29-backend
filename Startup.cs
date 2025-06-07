@@ -33,10 +33,13 @@ namespace R29_backend
 {
     options.AddPolicy("PoliticasdeAcceso", builder =>
     {
-        builder.WithOrigins("https://tudominio.vercel.app") // Reemplaza con tu dominio en Vercel
-               .AllowAnyMethod()
-               .AllowAnyHeader()
-               .AllowCredentials();
+        builder.WithOrigins(
+                "https://tudominio.vercel.app",
+                "http://localhost:3000"
+            )
+            .AllowAnyMethod()
+            .AllowAnyHeader()
+            .AllowCredentials();
     });
 });
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
